@@ -70,6 +70,11 @@ ul {
     background-color: #00a7f3;
     color: #fff;
     margin-left: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#add-task:hover {
+    opacity: 0.8;
 }
 
 .pagination li.disabled {
@@ -80,7 +85,7 @@ ul {
     cursor: pointer;
     color: #000000;
     width: 30px;
-    height: 28px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,10 +96,14 @@ ul {
 
 .page-number {
     height: 30px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.page-number:hover {
+    background-color: #00a6f349;
 }
 .page-number.active {
     background-color: #00a7f3;
-    border-radius: 50%;
     cursor: default;
 }
 
