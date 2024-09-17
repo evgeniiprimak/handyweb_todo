@@ -16,6 +16,14 @@ table {
     margin-bottom: 20px;
 }
 
+tr {
+    transition: all 0.3s ease;
+}
+
+tr.delete-animation {
+    opacity: 0;
+}
+
 th {
     text-align: left;
     font-weight: 700;
@@ -109,4 +117,32 @@ ul {
 
 .page-number.active span {
     color: #fff;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.8s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    opacity: 1;
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }

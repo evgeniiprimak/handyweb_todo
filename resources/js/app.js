@@ -25,6 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((data) => {
                 updateTaskList(data.tasksHtml, data.paginationHtml);
                 document.getElementById("task-title").value = "";
+
+                const newRow = taskList.firstElementChild;
+                newRow.classList.add("fade-in");
+
+                setTimeout(() => {
+                    newRow.classList.remove("fade-in");
+                }, 1800);
             });
     });
 
@@ -65,20 +72,28 @@ document.addEventListener("DOMContentLoaded", () => {
             const taskId = row.dataset.id;
             const currentPage = getCurrentPage();
 
-            fetch(`/tasks/${taskId}?page=${currentPage}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": document
-                        .querySelector('meta[name="csrf-token"]')
-                        .getAttribute("content"),
-                },
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    updateTaskList(data.tasksHtml, data.paginationHtml);
-                    window.history.pushState({}, "", `?page=${currentPage}`);
-                });
+            row.classList.add("fade-out");
+
+            setTimeout(() => {
+                fetch(`/tasks/${taskId}?page=${currentPage}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": document
+                            .querySelector('meta[name="csrf-token"]')
+                            .getAttribute("content"),
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        updateTaskList(data.tasksHtml, data.paginationHtml);
+                        window.history.pushState(
+                            {},
+                            "",
+                            `?page=${currentPage}`
+                        );
+                    });
+            }, 1000);
         }
     });
 
