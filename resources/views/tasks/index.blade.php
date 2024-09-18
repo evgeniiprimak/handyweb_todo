@@ -31,7 +31,9 @@
         </tbody>
     </table>
 
-    @include('tasks.partials.pagination', ['tasks' => $tasks])
+    <div id="pagination">
+        @include('tasks.partials.pagination', ['tasks' => $tasks])
+    </div>
     @vite('resources/js/app.js')
 </body>
 

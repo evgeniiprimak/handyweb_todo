@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const addTaskButton = document.getElementById("add-task");
     const taskList = document.getElementById("task-list");
+    const pagination = document.getElementById("#pagination");
 
     function getCurrentPage() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -99,7 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Обновление задач и пагинации
     function updateTaskList(tasksHtml, paginationHtml) {
-        taskList.innerHTML = tasksHtml;
-        document.querySelector(".pagination").innerHTML = paginationHtml;
+        if (tasksHtml) {
+            taskList.innerHTML = tasksHtml;
+        }
+        if (paginationHtml) {
+            pagination.innerHTML = paginationHtml;
+        }
     }
 });
